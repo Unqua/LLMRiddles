@@ -1,4 +1,11 @@
-# LLM Riddles
+---
+title: ClessS_is_all_around
+app_file: app.py
+sdk: gradio
+sdk_version: 4.1.1
+---
+
+# ClessS is All Around
 
 <div align="center">
 	<br>
@@ -7,7 +14,6 @@
 	</a>
 	<br>
 </div>
-
 
 ## :thinking: 什么是ClessS is All Around
 
@@ -18,7 +24,6 @@
 我们提供了在线版本以供玩家直接访问试玩:
 
 - [ChatGPT + 中文(已预设api key)](https://huggingface.co/spaces/jacob369/ClessS_is_all_around)
-
 
 ## :star2: Special Thanks
 
