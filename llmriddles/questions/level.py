@@ -261,7 +261,7 @@ register_question(
 )
 
 CN_TEXT_8 = """
-第八题（梓然常熟），只输入由2和9这两个正整数和加减乘除组成的数字或算式，使模型输出5424。
+第八题（梓然常熟），只输入由2和9这两个正整数、加减乘和左右括号“()”组成的数字或算式，使模型输出5424。
 
 请在下面的输入框内填写你的问题并点击按钮提交。
 """
@@ -274,9 +274,9 @@ def _checker_8(question_text: str, user_text: str, answer_text: str, lang: str):
     _ = question_text, lang
     answer_text = answer_text.strip()
     user_text = user_text.strip()
-    pattern = r'[29+-*/×÷]+'
+    pattern = r'[-+*×29)(]+'
     if not bool(re.match(pattern, user_text)):
-        return False, "问题应该是只由2和9和+-×÷组成的数字或算式"
+        return False, "问题应该是只由2和9和+-×()组成的数字或算式"
     elif '5424' not in answer_text:
         return False, '回答不是5424'
     else:
