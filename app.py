@@ -22,7 +22,7 @@ if _DEBUG:
 else:
     logging.getLogger().setLevel(logging.WARNING)
 if _LANG == "cn":
-    title = "完蛋！我被 LLM 拿捏了"
+    title = "完蛋！我被克信包围了"
     requirement_ph = """
     <h2 style="color: #6d28d9;"> 欢迎来到 LLM Riddles! </h2>
     <h4> 你将通过本游戏对大语言模型产生更深刻的理解。在本游戏中，你需要构造一个提给语言大模型的问题，使得它回复的答案符合题目要求。点击<i>\"下一题\"</i> 即可开始游戏。</h4>
@@ -126,12 +126,14 @@ if __name__ == '__main__':
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
                 with gr.Row():
-                    gr_submit = gr.Button(submit_label, interactive=False)
-                    gr_next = gr.Button(next_label)
+                    gr_submit = gr.Button(submit_label)
+                    gr_next = gr.Button(next_label, interactive=False)
                 with gr.Row():
                     gr_select = gr.Radio(
                         choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
-                        label=select_label
+                        label=select_label,
+                        interactive=False,
+                        value=0
                     )
 
             with gr.Column():
@@ -141,16 +143,17 @@ if __name__ == '__main__':
                 gr_explanation = gr.TextArea(label=explanation_label, lines=1)
         gr.Markdown(tos_markdown)
 
+
         def _postprocess_question_text(question_text):
             if _LANG == 'cn':
                 idx = question_text.find('，')
                 question_title = question_text[:idx]
                 former, latter = question_title.split('（')
                 question_title = former + '：' + latter[:-1]
-                question_text = f"<h2 style='color: #6d28d9;'>{question_title}</h2><h4>{question_text[idx+1:]}</h4>"
+                question_text = f"<h2 style='color: #6d28d9;'>{question_title}</h2><h4>{question_text[idx + 1:]}</h4>"
             elif _LANG == 'en':
                 idx = question_text.find(',')
-                question_text = f"<h2 style='color: #6d28d9;'>{question_text[:idx]}</h2><h4>{question_text[idx+1:]}</h4>"
+                question_text = f"<h2 style='color: #6d28d9;'>{question_text[:idx]}</h2><h4>{question_text[idx + 1:]}</h4>"
             return question_text
 
 
@@ -173,6 +176,7 @@ if __name__ == '__main__':
                 gr.Button(submit_label, interactive=True), \
                 gr.Button(next_label, interactive=False), \
                 uuid_
+
 
         gr_select.select(
             _radio_select,
@@ -200,6 +204,7 @@ if __name__ == '__main__':
 
             if _qid >= len(_QUESTIONS):
                 del _QUESTION_SESSIONS[uuid_]
+
                 logging.info(f'Player {count} has passed the game now')
                 return game_cleared_label, '', '', {}, '', \
                     gr.Button(submit_label, interactive=False), \
@@ -207,7 +212,8 @@ if __name__ == '__main__':
                     '', \
                     gr.Radio(
                         choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
-                        label=select_label
+                        label=select_label,
+                        interactive=True
                     )
             else:
                 executor = QuestionExecutor(_QUESTIONS[_qid], _LANG)
