@@ -1,102 +1,29 @@
----
-title: ClessS_is_all_around
-app_file: app.py
-sdk: gradio
-sdk_version: 4.1.1
----
 # LLM Riddles
 
 <div align="center">
 	<br>
-	<a href="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg">
-		<img src="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg" width="1000" height="200" alt="Click to see the source">
+	<a href="https://raw.githubusercontent.com/Unqua/LLMRiddles/main/llmriddles/assets/banner.gif">
+		<img src="https://raw.githubusercontent.com/Unqua/LLMRiddles/main/llmriddles/assets/banner.gif" width="1000" height="200" alt="Click to see the source">
 	</a>
 	<br>
 </div>
 
-English | [简体中文](https://github.com/opendilab/LLMRiddles/blob/main/README_zh.md)
 
-## :thinking: What's This
+## :thinking: 什么是ClessS is All Around
 
-Welcome to LLM Riddles! This is a game of wits and courage with language models. In the game, you need to construct
-questions that interact with the language model to get answers that meet the requirements. In this process, you can use
-your brain and use all the methods you can think of to get the model to output the results required by the answer.
+《完蛋！我被克信包围了》是由弃车人二次开发的一款全新AIGC冒险游戏。游戏发生在一个被称作「5424」的直播间，在这里，被克勾选中的人将被授予「克信」，导引p话之力。你将扮演一位名为「弃车人」的神秘角色......同时，逐步发掘「薇克」的真相。
 
-## :space_invader: How to Play
+## :space_invader: 如何试玩
 
-We provide an online version for players to directly access and try out.
+我们提供了在线版本以供玩家直接访问试玩:
 
-- [ChatGPT + English(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
-- [ChatGPT + Chinese(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
-- [Mistral + English(w/ key)](https://d9b451a97791dd8ef3.gradio.live)
-- [ChatGPT + Chinese(w/ key)](http://llmriddles.opendilab.net/)
+- [ChatGPT + 中文(已预设api key)](https://huggingface.co/spaces/jacob369/ClessS_is_all_around)
 
-Local deployment can be done in the following ways:
-
-### ChatGPT + Chinese
-
-```shell
-QUESTION_LANG=cn QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
-```
-
-### ChatGPT + English
-
-```shell
-QUESTION_LANG=en QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
-```
-
-### Mistral-7B-Instruct-v0.1 + English
-
-```shell
-QUESTION_LANG=en QUESTION_LLM='mistral-7b' python3 -u app.py
-```
-
-## :technologist: Why Doing This
-
-Our goal is to use this game to give participants a deeper understanding of the fascinating aspects of prompt
-engineering and natural language processing. This process will show players how to cleverly construct prompts and how to
-use them to trigger surprising responses from artificial intelligence systems, while also helping them better understand
-the incredible power of deep learning and natural language processing technologies. .
-
-## :raising_hand: How to Submit a Custom Level
-
-If you have interesting questions or ideas, players are welcome to submit their own ideas. You
-can [Initiate a Pull Request](https://github.com/opendilab/LLMRiddles/compare) and submit it to us. We will include it
-in the level after approval.
-The question format should include the following points:
-
-- Pull Request title, example: feature(username): Chapter X-Level Design
-- The ID you want to be mentioned
-- Modify the corresponding chapter question files
-- Modification of \__init__.py
-
-For a complete example, please refer to: [Submit your own level design](https://github.com/opendilab/LLMRiddles/pull/6)
-
-## :writing_hand: Roadmap
-
-- [x] Support custom levels
-- [x] Online trial link
-- [x] Hugging Face Space link
-- [x] Support Mistral-7B（English version）
-- [ ] Support ChatGLM（Chinese version）
-- [ ] Support Baichuan2-7B（Chinese version）
-- [ ] Support LLaMA2-7B（English version）
-- [ ] LLM inference speed optimization
-
-## :speech_balloon: Feedback and Contribution
-
-- [Start an Issue](https://github.com/opendilab/CodeMorpheus/issues/new/choose) on GitHub
-- Contact us by email (opendilab@pjlab.org.cn)
-- Discuss on OpenDILab's WeChat group (i.e. add us on WeChat: ding314assist)
-  <img src=https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/wechat.jpeg width=35% />
 
 ## :star2: Special Thanks
 
-- Thanks to [Haoqiang Fan](https://www.zhihu.com/people/haoqiang-fan) for his original idea and title, which provided
-  inspiration and motivation for the development and expansion of this project.
-- Thanks to [HuggingFace](https://huggingface.co) for supporting and assisting the game.
-- Thanks to [LLM Riddles contributors](https://github.com/opendilab/LLMRiddles/graphs/contributors) for their
-  implementation and support.
+- 感谢 [Haoqiang Fan](https://www.zhihu.com/people/haoqiang-fan) 的原始创意和题目，为本项目的开发和扩展提供了灵感与动力。
+- 感谢 原作者[LLM Riddles contributors](https://github.com/opendilab/LLMRiddles) 的实现与支持。
 
 ## :label: License
 

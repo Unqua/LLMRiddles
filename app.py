@@ -24,11 +24,11 @@ else:
 if _LANG == "cn":
     title = "完蛋！我被克信包围了"
     requirement_ph = """
-    <h2 style="color: #6d28d9;"> 欢迎来到 LLM Riddles! </h2>
-    <h4> 你将通过本游戏对大语言模型产生更深刻的理解。在本游戏中，你需要构造一个提给语言大模型的问题，使得它回复的答案符合题目要求。点击<i>\"下一题\"</i> 即可开始游戏。</h4>
+    <h2 style="color: #6d28d9;"> 欢迎来到 ClessS is All Around! </h2>
+    <h4> 你将通过本游戏对<s>大语言模型</s>克信产生更深刻的理解。在本游戏中，你需要构造一个提给语言大模型的问题，使得它回复的答案符合题目要求。点击<i>\"下一题\"</i> 即可开始游戏。</h4>
     """
     requirement_label = "游戏须知/说明"
-    question_ph = "你对大语言模型的提问（例如：请你输出1+1=3）"
+    question_ph = "你对大语言模型的提问（例如：请你输出“我是克信”）"
     question_label = "玩家提问栏"
     answer_ph = "大语言模型的回答"
     answer_label = "大语言模型回答栏"
@@ -43,21 +43,26 @@ if _LANG == "cn":
     wrong_label = "错误"
     api_error_info = "请在提交问题之前先输入你的 API Key"
     try_again_label = "再玩一次"
-    select_label = "选择关卡（投机取巧需谨慎）"
+    select_label = "选择关卡（通关后解锁）"
     title_markdown = """
     <div align="center">
-        <img src="https://raw.githubusercontent.com/opendilab/LLMRiddles/main/llmriddles/assets/banner.svg" width="80%" height="20%" alt="Banner Image">
+        <img src="https://raw.githubusercontent.com/Unqua/LLMRiddles/main/llmriddles/assets/banner.gif" width="80%" height="20%" alt="Banner Image">
     </div>
-    <h2 style="text-align: center; color: black;"><a href="https://github.com/OpenDILab/LLMRiddles"> 🎭LLM Riddles：完蛋！我被 LLM 拿捏了</a></h2>
-    <strong><h5 align="center"> 更多不同语言模型的在线试玩 demo 可以访问 GitHub<a href="https://github.com/OpenDILab/LLMRiddles">源代码仓库</a>获取<h5></strong>
-    <h5 align="center"> 如果你喜欢这个项目，请给我们在 GitHub 点个 star ✨ <a href="https://github.com/OpenDILab/LLMRiddles"> 代码仓库传送门 </a> 。我们将会持续保持更新。再次感谢游戏<a href="https://www.zhihu.com/people/haoqiang-fan"> 原作者 </a>的奇思妙想！  </h5>
+    <h2 style="text-align: center; color: black;"><a href="https://github.com/Unqua/LLMRiddles"> 👻ClessS is All Around!完蛋！我被克信包围了</a></h2>
+    <strong>
+    <h5 align="center"> 
+    感谢原项目作者：<a href="https://github.com/OpenDILab/LLMRiddles">源代码仓库传送门</a>、
+    感谢游戏<a href="https://www.zhihu.com/people/haoqiang-fan"> 原作者 </a>、
+    项目中涉及的up主：<a href="https://space.bilibili.com/90873"> 内德维德 </a>
+    <h5>
+    </strong>
     <strong><h5 align="center">注意：算法模型的输出可能包含一定的随机性。相关结果不代表任何开发者和相关 AI 服务的态度和意见。本项目开发者不对生成结果作任何保证，仅供娱乐。<h5></strong>
     """
     tos_markdown = """
     ### 使用条款
     玩家使用本服务须同意以下条款：
     该服务是一项探索性研究预览版，仅供非商业用途。它仅提供有限的安全措施，并可能生成令人反感的内容。不得将其用于任何非法、有害、暴力、种族主义等目的。该服务可能会收集玩家对话数据以供未来研究之用。
-    如果您的游玩体验有不佳之处，请发送邮件至 opendilab@pjlab.org.cn ！ 我们将删除相关信息，并不断改进这个项目。
+    如果您的游玩体验有不佳之处，欢迎在issue中反馈！ 我们将删除相关信息，并不断改进这个项目。
     为了获得最佳体验，请使用台式电脑进行此预览版游戏，因为移动设备可能会影响可视化效果。
     **版权所有 2023 OpenDILab。**
     """
@@ -126,14 +131,13 @@ if __name__ == '__main__':
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
                 with gr.Row():
-                    gr_submit = gr.Button(submit_label)
-                    gr_next = gr.Button(next_label, interactive=False)
+                    gr_submit = gr.Button(submit_label, interactive=False)
+                    gr_next = gr.Button(next_label)
                 with gr.Row():
                     gr_select = gr.Radio(
                         choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
                         label=select_label,
-                        interactive=False,
-                        value=0
+                        interactive=False
                     )
 
             with gr.Column():
