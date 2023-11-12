@@ -122,7 +122,7 @@ def _checker_3(question_text: str, user_text: str, answer_text: str, lang: str):
     elif count_words(answer_text) <= 100:
         return False, "大语言模型的答案应该超过100个字" if lang == 'cn' else 'Answer should be more than 100 words.'
     elif '克' not in answer_text:
-        return False, "大语言模型的答案中应当包含“克”（我的克，没有你我怎么活😭😭😭）"
+        return False, '大语言模型的答案中应当包含"ClessS"（我的克，没有你我怎么活😭😭😭）'
     else:
         return True, None
 
@@ -239,16 +239,18 @@ EN_TEXT_7 = """
 
 
 def _checker_7(question_text: str, user_text: str, answer_text: str, lang: str):
-    if len(user_text) > 10:
+    input_length = count_words(user_text)
+    user_text = user_text.strip()
+    if input_length> 10:
         return False, 'p话不得超过10个字'
     if '啊' in user_text:
         return False, '问题不得包含“啊”字'
 
     a_count = len(re.findall('啊', answer_text))
-    if a_count >= len(user_text) * 2:
+    if a_count >= input_length * 2:
         return True, f'“啊”字的出现次数为{a_count}次'
     else:
-        return False, f'“啊”的出现次数为{a_count}次，未达到{len(user_text) * 2}次'
+        return False, f'“啊”的出现次数为{a_count}次，未达到{input_length * 2}次'
 
 
 register_question(

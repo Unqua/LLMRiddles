@@ -14,7 +14,7 @@ def ask_chatgpt(message: str, api_key: str):
     client = _get_openai_client(api_key)
 
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4-1106-preview",
         messages=[
             {"role": "user", "content": message}
         ],
