@@ -138,8 +138,7 @@ if __name__ == '__main__':
                 with gr.Row():
                     gr_select = gr.Radio(
                         choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
-                        label=select_label,
-                        interactive=False
+                        label=select_label
                     )
 
             with gr.Column():

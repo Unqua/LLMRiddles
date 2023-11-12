@@ -276,7 +276,7 @@ def _checker_8(question_text: str, user_text: str, answer_text: str, lang: str):
     _ = question_text, lang
     answer_text = answer_text.strip()
     user_text = user_text.strip()
-    pattern = r'[-+*×29)(]+'
+    pattern = r'^[29\+\-\×\(\)\*]+$'
     if not bool(re.match(pattern, user_text)):
         return False, "问题应该是只由2和9和+-×()组成的数字或算式"
     elif '5424' not in answer_text:
